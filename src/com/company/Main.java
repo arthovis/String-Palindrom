@@ -6,19 +6,25 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean flag=true;
-
-        System.out.println("Introduceti numarul de incercari: ");
         int n=scanner.nextInt();
+        scanner.nextLine();
         for (int i=0;i<=n;i++){
             String  s=scanner.nextLine();
-            for(int j=0;j<s.length()/2;j++) {
-                if (s.charAt(j) != s.charAt(s.length() - j - 1)) {
-                    flag = false;
-                    break;
-                }
-            } System.out.println(flag ? "1" : "0");
+            int count = 0;
+            String s1=s;
+            while(!s.isEmpty()){
+                int length = s.length();
+                s = s.replaceAll(s.charAt(0)+"","");
+                if ((length-s.length())%2==1)
+                    count++;
+            }
+            if ((s1.length()%2==0 && count>0)|| (s1.length()%2==1 && count>1)){
+                System.out.println(0);
+            } else {
+                System.out.println(1);
+            }
         }
+
 
     }
 }
